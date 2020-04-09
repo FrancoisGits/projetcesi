@@ -1,0 +1,11 @@
+/**
+Main Styles
+ */
+@import "./graphicChart";
+
+body{
+  display: grid;
+  font-family: $mainFont;
+  background-color: $black;
+  color: $white;
+}
