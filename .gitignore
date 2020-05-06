@@ -3,3 +3,7 @@
 *.iml
 out
 gen
+# Illustrator files
+.ai
+# project config file
+bin/config/config.json
