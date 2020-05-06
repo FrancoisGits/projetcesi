@@ -1,1 +1,3 @@
-console.log('js works !');
+import * as security from './modules/security.js';
+
+security.securizeMutations();

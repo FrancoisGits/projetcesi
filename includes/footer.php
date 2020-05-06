@@ -1,3 +1,3 @@
 </body>
-<script src="./assets/js/main.js"></script>
+<script type="module" src="./assets/js/main.js"></script>
 </html>
