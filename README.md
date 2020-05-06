@@ -1,13 +1,13 @@
 **Projet de fin d'année CESI - Equipe 4** 
 
 ---
-ConnectLife
+**ConnectLife**
 
 Php 7.3, MariaDB 10.4, Sass 1.26
 
 ---
 
-Installation:
+**Installation:**
 * `git clone https://github.com/Sonicfury/projetcesi`
 
 or
@@ -15,7 +15,7 @@ or
 * `git remote add origin https://github.com/Sonicfury/projetcesi`
 
 ---
-Naming:
+**Naming:**
 * variables: `$camelCase`
 * fonctions: `function camelCase()`
 * images: `snake_case.png`
@@ -29,4 +29,8 @@ Naming:
      - updated this one
      - this is left to do
     ```
-  
+---
+**Database**
+
+- create and populate the database `$ php bin/scripts/createDatabase.php`
+- load fixtures `$ php bin/scripts/loadFixtures.php`
