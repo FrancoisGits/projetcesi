@@ -2,7 +2,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require '../config/database.php';
+
+
+require  '../config/database.php';
 
 // todo : check if works
 function connect($withDbName){

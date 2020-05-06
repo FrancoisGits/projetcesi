@@ -1,11 +1,34 @@
-/**
-Main Styles
- */
-@import "./graphicChart";
+@import "./modules/variables";
+@import "./modules/header";
+@import "./modules/footer";
+@import "./modules/forms";
+@import "./modules/customSelect";
 
-body{
-  display: grid;
-  font-family: $mainFont;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
   background-color: $black;
   color: $white;
+  font-family: $mainFont;
+  font-weight: $light;
+  letter-spacing: 1px;
+  display: grid;
+  grid-template-areas:
+          "logo"
+          "form"
+          "footer";
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    grid-template-columns: 20% auto 20%;
+    grid-template-areas:
+            "logo logo logo"
+            ". form . "
+            "footer footer footer";
+  }
 }

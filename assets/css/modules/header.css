@@ -1,0 +1,23 @@
+.welcome {
+  grid-area: logo;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh 3vw;
+}
+.welcome img {
+  width: 80%;
+}
+.welcome h1 {
+  display: none;
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .welcome img {
+    width: 40%;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */

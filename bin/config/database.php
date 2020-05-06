@@ -1,8 +1,6 @@
 <?php
-
-//fetching config file
-$content = utf8_encode(file_get_contents(__DIR__ . '\config.json', FALSE, NULL));
-$dbConfig = json_decode($content, true, 512, JSON_THROW_ON_ERROR)['database'];
+require 'config.php';
+$dbConfig = $content['database'];
 
 //defining constants
 define('DB_HOST', $dbConfig['host']);
@@ -13,6 +11,8 @@ define('DB_DSN', 'mysql:dbname=connectlife' . ';host=' . DB_HOST . ';port=' . DB
 
 try {
     $db = new PDO(DB_DSN, DB_USER, DB_PASS);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (\PDOException $e) {
-    echo '¯\_(シ)_/¯: ' . $e->getMessage() . "\r\n";
+    die('¯\_(シ)_/¯: ' . $e->getMessage() . "\r\n");
 }

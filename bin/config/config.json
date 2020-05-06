@@ -4,5 +4,6 @@
     "port": "3306",
     "username": "root",
     "password": ""
-  }
+  },
+  "url": "http://projetcesi.test"
 }
