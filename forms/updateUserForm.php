@@ -6,7 +6,7 @@
             <input
                 name="civilite"
                 id="civilite1"
-                value="0"
+                value="Mme"
                 class="formInput"
                 required
                 type="radio"
@@ -17,7 +17,7 @@
             <input
                 name="civilite"
                 id="civilite2"
-                value="1"
+                value="M."
                 class="formInput"
                 required
                 type="radio">

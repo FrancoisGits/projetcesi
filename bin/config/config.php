@@ -4,6 +4,5 @@ $content = json_decode(
         file_get_contents(__DIR__ . '\config.json', FALSE, NULL)
     ),
     true,
-    512,
-    JSON_THROW_ON_ERROR
+    512
 );

@@ -7,6 +7,13 @@
   align-items: center;
   margin: 5vh 3vw;
 }
+.formGroup #downloadDisclaimer {
+  text-align: center;
+}
+.formGroup #exportAllButton, .formGroup #exportLastButton {
+  margin-top: 2vh;
+  width: 70vw;
+}
 .formGroup span {
   font-style: italic;
   font-size: 0.8em;
@@ -82,6 +89,13 @@
   cursor: pointer;
 }
 
+.disclaimer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #message {
   resize: none;
   height: 20vh;
@@ -97,6 +111,10 @@
   }
   .formInputGroup input {
     width: 70%;
+  }
+
+  .formGroup #exportAllButton, .formGroup #exportLastButton {
+    width: 30vw;
   }
 
   #message {
