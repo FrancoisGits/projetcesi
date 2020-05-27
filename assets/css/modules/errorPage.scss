@@ -1,0 +1,19 @@
+@import "variables";
+
+.errorSection{
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10vh;
+  padding: 2vw;
+  h2, h1, p{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  h2{
+    color: $darkBlue;
+  }
+}

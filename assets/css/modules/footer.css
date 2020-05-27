@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
 footer {
+  grid-area: footer;
   border-top: 1px solid #f0f0f0;
   padding-top: 4vh;
-  grid-area: footer;
   display: flex;
   margin: 10vh 3vw;
   justify-content: space-around;

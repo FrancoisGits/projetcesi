@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require '../config/database.php';
+require dirname(__DIR__) . '/config/database.php';
 
 
 // todo : check if works

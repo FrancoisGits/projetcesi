@@ -1,9 +1,9 @@
 @import "./variables";
 
 footer {
+  grid-area: footer;
   border-top: 1px solid $white;
   padding-top: 4vh;
-  grid-area: footer;
   display: flex;
   margin: 10vh 3vw;
   justify-content: space-around;
