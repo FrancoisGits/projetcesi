@@ -32,8 +32,13 @@ if (!empty($_POST)) {
 
         $user['telPro'] = sanitizePhoneNumber($_POST['telPro']);
         $user['telPerso'] = sanitizePhoneNumber($_POST['telPerso']);
-        $user['email'] = sanitizeEmail($_POST['email']);
         $user['exported'] = 0;
+        $user['email'] = sanitizeEmail($_POST['email']);
+        if ($_SESSION['user']['email']===sanitizeEmail($_POST['email'])){
+            $user['email'] = sanitizeEmail($_POST['email']);
+        } else {
+            $invalidEmail = true;
+        };
     } catch (Exception $e) {
         die($e->getMessage());
     }
