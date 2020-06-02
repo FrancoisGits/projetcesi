@@ -25,7 +25,7 @@ const config = {
 const callback = function (mutationsList) {
     for (let mutation of mutationsList) {
         if (mutation.type == 'attributes') {
-            if (mutation.attributeName == 'required' || mutation.attributeName == 'pattern') {
+            if (mutation.attributeName == 'pattern') {
                 alert('¯\\_(シ)_/¯');
                 document.location.reload();
             }

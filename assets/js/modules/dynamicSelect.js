@@ -4,7 +4,7 @@
  * Request base URI
  * @type {string}
  */
-const BASE_URI = "http://projetcesi.test/actions/";
+const BASE_URI = "http://connectlife.test/actions/";
 
 /**
  * Form element to select a city
@@ -23,7 +23,7 @@ const codePostalField = $("#codePostal");
  * Fires a query on keyup in codePostal field
  */
 export const codePostalObserver = function(){
-    codePostalField.keyup(function () {
+    codePostalField.change(function () {
         requestInseeCodes();
     });
 };
@@ -31,7 +31,7 @@ export const codePostalObserver = function(){
 /**
  * Request insee codes from api
  */
-const requestInseeCodes = function () {
+export const requestInseeCodes = function () {
     // fires the query if user has type 4 or 5 characters only
     let count = codePostalField.val().length;
     citySelect.attr("disabled", true);

@@ -14,6 +14,11 @@ or
 * `git init`
 * `git remote add origin https://github.com/Sonicfury/projetcesi`
 
+In order to correctly install and run the app, make sure php 7.3 is installed and in your PATH and MariaDB 10.4 is installed.
+
+Then you can run in the project directory (usually "C"/xampp/htdocs/connectlife"):
+
+`php bin/scripts/install.php`
 ---
 **Naming:**
 * variables: `$camelCase`
@@ -30,7 +35,3 @@ or
      - this is left to do
     ```
 ---
-**Database**
-
-- create and populate the database `$ php bin/scripts/createDatabase.php`
-- load fixtures `$ php bin/scripts/loadFixtures.php`

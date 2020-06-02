@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
 .welcome {
   grid-area: logo;
   display: flex;
@@ -92,14 +93,14 @@ footer ul {
   padding: 5px;
 }
 .formInputGroup .formInput:focus, .formInputGroup .formInput:active {
-  box-shadow: 0 0 8px 1px rgba(240, 240, 240, 0.51);
+  box-shadow: 0 0 10px 3px rgba(240, 240, 240, 0.51);
 }
-.formInputGroup input:not(:placeholder-shown):invalid {
+.formInputGroup input:not(:placeholder-shown):invalid, .formInputGroup input[placeholder="Merci de renseigner ce champ"]:invalid {
   border: 2px groove #b00700;
   color: #b00700;
 }
-.formInputGroup input:not(:placeholder-shown):invalid:focus, .formInputGroup input:not(:placeholder-shown):invalid:active {
-  box-shadow: 0 0 8px 1px rgba(176, 7, 0, 0.5);
+.formInputGroup input:not(:placeholder-shown):invalid:focus, .formInputGroup input:not(:placeholder-shown):invalid:active, .formInputGroup input[placeholder="Merci de renseigner ce champ"]:invalid:focus, .formInputGroup input[placeholder="Merci de renseigner ce champ"]:invalid:active {
+  box-shadow: 0 0 10px 3px rgba(176, 7, 0, 0.5);
 }
 
 .radioInputGroup {
@@ -140,6 +141,10 @@ footer ul {
   resize: none;
   height: 20vh;
   font-family: "Roboto", sans-serif;
+}
+
+.phoneDisclaimer {
+  display: none;
 }
 
 @media screen and (min-width: 1024px) {
@@ -252,6 +257,20 @@ footer ul {
 }
 .errorSection h2 {
   color: #047f9e;
+}
+
+.thanks {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10vh;
+  padding: 2vw;
+}
+.thanks h1, .thanks p {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 html {

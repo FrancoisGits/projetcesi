@@ -1,5 +1,6 @@
 <?php
-require 'config.php';
+require_once 'config.php';
+require_once 'logger.php';
 $dbConfig = $content['database'];
 
 //defining constants
@@ -14,5 +15,6 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (\PDOException $e) {
-    die('¯\_(シ)_/¯: ' . $e->getMessage() . "\r\n");
+    addToLog($e->getMessage());
+    die('Error : ' . $e->getMessage() . "\r\n");
 }

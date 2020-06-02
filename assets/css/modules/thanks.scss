@@ -1,6 +1,6 @@
 @import "variables";
 
-.errorSection {
+.thanks {
   grid-area: form;
   display: flex;
   flex-direction: column;
@@ -8,13 +8,9 @@
   margin-top: 10vh;
   padding: 2vw;
 
-  h2, h1, p {
+  h1, p {
     display: flex;
     justify-content: center;
     text-align: center;
-  }
-
-  h2 {
-    color: $darkBlue;
   }
 }

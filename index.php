@@ -1,12 +1,20 @@
 <?php
 session_start();
-require './bin/config/config.php';
+
+require_once './bin/config/config.php';
+require_once './bin/config/logger.php';
 require_once './bin/config/database.php';
 require_once './actions/userCheckHelper.php';
 require './includes/header.php';
 
+
+
 if (isset($_POST['disclaimer']) && $_POST['disclaimer'] !== false){
-    $request = 'forms';
+    $request = '/forms';
+} else if (isset($_SESSION['submittedForm']) && $_SESSION['submittedForm'] !== false) {
+    $request = '/thanks';
+} else if (isset($_GET['backFromInvalidEmail']) && $_GET['backFromInvalidEmail'] === 'true'){
+    $request = '/forms';
 } else {
     $request = $_SERVER['REQUEST_URI'];
 }
@@ -26,21 +34,25 @@ switch ($request){
                 break;
             default :
                 $_SESSION['user'] = $userChecked;
+                $userGuid = $_SESSION['user']['guid'];
+                $userName = $_SESSION['user']['nom'];
+                addToLog("Connected : $userGuid $userName");
                 require_once './includes/homeDisclaimer.php';
                 break;
         }
         break;
-    case 'forms':
-        if ($_SESSION['user']['isSociete'] === '1'){
-            require_once './forms/updateUserForm.php';
-        } else {
-            require_once './forms/updateSimpleCustomer';
-        }
+    case '/forms':
+        require_once './forms/updateUserForm.php';
+        break;
+    case '/thanks':
+        require_once './includes/thanks.php';
+        break;
+    case '/invalidEmail':
+        require_once './includes/invalidEmail.php';
         break;
     case '/export-users':
-        echo 'export';
+        require_once './forms/exportForm.php';
         break;
-    /*require_once './forms/exportForm.php';*/
     default:
         http_response_code(404);
         require_once './includes/404.php';

@@ -10,6 +10,6 @@ if (isset($_SESSION['user'])) {
         nos nouvelles ressources, nous avons besoin d'un peu plus d'informations sur vous. Si vous êtes d'accord, vous
         pouvez cliquer sur le bouton \"suivant\" ci-dessous et remplir le formulaire.</p>
     <span class=\"rgpd\">Conformément au RGPD, vous disposez d'un droit d'accès et de modification sur vos données, pour ce faire merci de nous contacter directement</span>
-    <button class='next' name='disclaimer' value='true' type='submit'>Suivant</button>    
+    <button autofocus class='next' name='disclaimer' value='true' type='submit'>Suivant</button>    
 </form>";
 }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../bin/config/database.php';
+require_once '../bin/config/logger.php';
 require_once './XMLHelper.php';
 
 // Fetching users to export
@@ -31,43 +32,36 @@ try{
 
 // Exception if no new customer has registered
     if (empty($result)){
-        throw new Exception('¯\_(シ)_/¯ => no new customer has registered yet, please try again later');
+        $_SESSION['NoUsersToExport'] = true;
+        throw new Exception('Error : no new customer has registered yet, please try again later');
     }
 } catch (Exception $e) {
-    $_SESSION['error'] = true;
-    /*header('Cache-Control: no-cache, must-revalidate');*/
-    header('Refresh');
-    /*header('Location:' . dirname(__DIR__) . '\index.php?export&error');*/
+    if (PRODUCTION === false){
+        echo $e->getMessage();
+    }
+    addToLog($e->getMessage());
+    header('Location:' . APP_ROOT . '/export-users');
 }
 
-// xml handling
+// XML handling
 $file = dirname(__DIR__) . '\exports\\' . date('Y_m_d_His') . '_ConnectLife_new_customers_only.xml';
-$handle = fopen($file, 'xb+');
-$xmlHeader = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n    <clients>\r\n";
-$xmlFooter = "    </clients>\r\n</xml>";
-$idsToUpdate = [];
-
-fwrite($handle, $xmlHeader);
-foreach ($result as $customer) {
-    $idsToUpdate[] = $customer['id'];
-    $user = formatDataIntoXML($customer);
-    fwrite($handle, $user);
-}
-fwrite($handle, $xmlFooter);
-fclose($handle);
+$idsToUpdate = createXML($result, $file, true);
 
 // file download handling
 if (file_exists($file)) {
+    $fileName = basename($file);
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="' . basename($file) . '"');
+    header('Content-Disposition: attachment; filename="' . $fileName . '"');
     header('Content-Length: ' . filesize($file));
     readfile($file);
+    addToLog("Export : file $fileName has been generated");
 
     // updating users and mark them as exported
     foreach ($idsToUpdate as $idToUpdate) {
         $stmt = 'UPDATE connectlife.clients SET exported = 1 WHERE id=:id';
         $prep = $db->prepare($stmt);
         $prep->execute(['id' => $idToUpdate]);
+        addToLog("Updated : user with id $idToUpdate");
     }
 }

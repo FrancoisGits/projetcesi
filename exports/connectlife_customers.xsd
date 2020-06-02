@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="clients">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="client">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="guid" type="xs:string" />
+                            <xs:element name="civilite" type="xs:string" />
+                            <xs:element name="nom" type="xs:string" />
+                            <xs:element name="prenom" type="xs:string" />
+                            <xs:element name="adresse1" type="xs:string" />
+                            <xs:element name="adresse2" type="xs:string" />
+                            <xs:element name="insee">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="codePostal" type="xs:unsignedInt" />
+                                        <xs:element name="ville" type="xs:string" />
+                                        <xs:element name="complement" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:unsignedShort" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="telephone1" type="xs:unsignedInt" />
+                            <xs:element name="telephone2" type="xs:string" />
+                            <xs:element name="email" type="xs:string" />
+                            <xs:element minOccurs="0" name="societe" />
+                            <xs:element minOccurs="0" name="poste" />
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

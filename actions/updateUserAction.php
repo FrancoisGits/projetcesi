@@ -1,46 +1,41 @@
 <?php
-
+session_start();
 require_once '../bin/config/database.php';
-require './sanitizer.php';
-require './GUIDHelper.php';
+require './validator.php';
 
+
+$invalidEmail = false;
 /**
  * Creates an array representing a user, validates and sanitizes user input
  */
-if (!empty($_POST)) {
-    try {
-        $user['guid'] = /*$_SESSION['GUID'] ?: */getGUID($db);
-        var_dump($_POST['civilite']);
-        var_dump(preg_match('/(M.|Mme)/', $_POST['civilite']));
-        if (!empty($_POST['civilite']) && preg_match('/(M.|Mme)/', $_POST['civilite'])) {
-             $user['civilite'] = $_POST['civilite'];
-        } else {
-            throw new Exception('¯\_(シ)_/¯ => not valid or null civilite given');
-        }
-        $user['nom'] = sanitizeString($_POST['nom'], MB_CASE_UPPER);
-        $user['prenom'] = sanitizeString($_POST['prenom'], MB_CASE_TITLE);
-        $user['societe'] = $_POST['societe'] ? sanitizeString($_POST['societe'], MB_CASE_UPPER) : null;
-        $user['poste'] = $_POST['poste'] ? sanitizeString($_POST['poste'], MB_CASE_TITLE) : null;
-        $user['adresse1'] = sanitizeString($_POST['adresse1'], MB_CASE_TITLE);
-        $user['adresse2'] = mb_convert_case(trim(filter_var($_POST['adresse2'], FILTER_SANITIZE_STRING)), MB_CASE_TITLE, 'UTF-8') ?: null;
+if (!empty($_POST) && isset($_SESSION['user'])) {
+    $isSociete = $_SESSION['user']['isSociete'] === '1';
+    $user['guid'] = $_SESSION['user']['guid'];
+    $user['civilite'] = $_POST['civilite'];
+    $user['nom'] = sanitizeString($_POST['nom'], MB_CASE_UPPER);
+    $user['prenom'] = sanitizeString($_POST['prenom'], MB_CASE_TITLE);
+    $user['societe'] = $_POST['societe'] ? sanitizeString($_POST['societe'], MB_CASE_UPPER) : null;
+    $user['poste'] = $_POST['poste'] ? sanitizeString($_POST['poste'], MB_CASE_TITLE) : null;
+    $user['adresse1'] = sanitizeString($_POST['adresse1'], MB_CASE_TITLE);
+    $user['adresse2'] = mb_convert_case(trim(filter_var($_POST['adresse2'], FILTER_SANITIZE_STRING)), MB_CASE_TITLE, 'UTF-8') ?: null;
+    $user['codeInsee'] = $_POST['codeInsee'];
+    $user['telPro'] = sanitizePhoneNumber($_POST['telPro']);
+    $user['telPerso'] = sanitizePhoneNumber($_POST['telPerso']);
+    if ($_SESSION['user']['mail'] === sanitizeString($_POST['email'], MB_CASE_LOWER)){
+        $user['email'] = sanitizeString($_POST['email'], MB_CASE_LOWER);
+    } else {
+        $fixtureEmail = $_SESSION['user']['mail'];
+        $invalidEmail = true;
+    }
+    $user['exported'] = 0;
+    $_SESSION['user'] = $user;
+    $_SESSION['user']['mail'] = $fixtureEmail;
+    $_SESSION['user']['codePostal'] = $_POST['codePostal'];
+    $_SESSION['user']['isSociete'] = $isSociete === true ? '1' : '0';
 
-        if (!empty($_POST['codeInsee']) && preg_match('/[0-9]{3,5}/', $_POST['codeInsee'])) {
-                $user['codeInsee'] = $_POST['codeInsee'];
-        } else {
-            throw new Exception('¯\_(シ)_/¯ => not valid or null codeInsee given');
-        }
-
-        $user['telPro'] = sanitizePhoneNumber($_POST['telPro']);
-        $user['telPerso'] = sanitizePhoneNumber($_POST['telPerso']);
-        $user['exported'] = 0;
-        $user['email'] = sanitizeEmail($_POST['email']);
-        if ($_SESSION['user']['email']===sanitizeEmail($_POST['email'])){
-            $user['email'] = sanitizeEmail($_POST['email']);
-        } else {
-            $invalidEmail = true;
-        };
-    } catch (Exception $e) {
-        die($e->getMessage());
+    if ($invalidEmail === true || validateUser() !== true){
+        header('Location:' . APP_ROOT . '/invalidEmail');
+        exit();
     }
 }
 
@@ -88,6 +83,21 @@ $params = [
     'exported' => $user['exported'],
     'inseeId' => $user['codeInsee']
 ];
-$prep = $db->prepare($stmt);
-$prep->execute($params);
+try {
+    $prep = $db->prepare($stmt);
+    $prep->execute($params);
+} catch (PDOException $e){
+    if (PRODUCTION === false){
+        echo $e->getMessage();
+    }
+    addToLog($e->getMessage());
+}
 
+
+$userGuid = $user['guid'];
+$userName = $user['nom'] . ' ' . $user['prenom'];
+addToLog("Added : $userGuid $userName");
+
+$_SESSION['submittedForm'] = true;
+header('Location:' . APP_ROOT);
+exit();

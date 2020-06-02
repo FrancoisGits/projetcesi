@@ -11,7 +11,7 @@ function connect($withDbName){
     try {
         $db = new PDO($dsn, DB_USER, DB_PASS);
     } catch (\PDOException $e) {
-        echo '¯\_(シ)_/¯: ' . $e->getMessage() . "\r\n";
+        echo 'Error : ' . $e->getMessage() . "\r\n";
     }
     return $db;
 }
@@ -29,7 +29,7 @@ function create(){
         $db->exec($stmt);
         echo "... complete ! \r\n";
     } catch (Exception $e) {
-        echo '¯\_(シ)_/¯: ' . $e->getMessage() . "\r\n";
+        echo 'Error : ' . $e->getMessage() . "\r\n";
     }
 }
 
@@ -47,13 +47,13 @@ function populate(){
                 echo $buffer;
             }
             if (!feof($handle)) {
-                echo "¯\_(シ)_/¯ : fgets() error \r\n";
+                echo "Error : fgets() error \r\n";
             }
             fclose($handle);
         }
         echo "... complete ! \r\n";
     } catch (Exception $e) {
-        echo '¯\_(シ)_/¯: ' . $e->getMessage() . "\r\n";
+        echo 'Error : ' . $e->getMessage() . "\r\n";
     }
 }
 

@@ -1,4 +1,4 @@
-<form class="formGroup" action="../actions/updateUserAction.php" method="post">
+<form class="formGroup" id="updateUserForm" action="../actions/updateUserAction.php" method="post">
     <div class="formInputGroup radioInputGroup">
         <label for="civilite">Civilité:</label>
         <div class="radioContainer">
@@ -9,6 +9,7 @@
                 value="Mme"
                 class="formInput"
                 required
+                autofocus
                 type="radio"
                 checked>
         </div>
@@ -23,14 +24,13 @@
                 type="radio">
         </div>
     </div>
-    </div>
     <div class="formInputGroup">
         <label for="nom">Nom:</label>
         <input
             placeholder="Nom"
             name="nom"
             id="nom"
-            class="formInput formError"
+            class="formInput formError fixture"
             required
             type="text">
     </div>
@@ -44,7 +44,7 @@
             required
             type="text">
     </div>
-    <div class="formInputGroup">
+    <div class="formInputGroup societe">
         <label for="societe">Nom de la société:</label>
         <input
             placeholder="Société"
@@ -54,7 +54,7 @@
             required
             type="text">
     </div>
-    <div class="formInputGroup">
+    <div class="formInputGroup societe">
         <label for="poste">Poste occupé:</label>
         <input
             placeholder="Poste"
@@ -107,17 +107,7 @@
             </select>
         </div>
     </div>
-    <div class="formInputGroup">
-        <label for="telPro">Téléphone professionel:</label>
-        <input placeholder="03 45 67 89 01"
-               name="telPro"
-               id="telPro"
-               class="formInput"
-               type="text"
-               required
-               pattern="^(0[0-9]|\+[3]{2}\s?[0-9]{1})(\s?[0-9]{2}){4}"
-               title="0 ou +33 suivi de 9 chiffres, avec ou sans espaces">
-    </div>
+    <span class="phoneDisclaimer">Remplissez au moins un numéro de téléphone: *</span>
     <div class="formInputGroup">
         <label for="telPerso">Téléphone personnel:</label>
         <input placeholder="06 78 90 12 34"
@@ -130,14 +120,25 @@
                title="0 ou +33 suivi de 9 chiffres, avec ou sans espaces">
     </div>
     <div class="formInputGroup">
+        <label for="telPro">Téléphone professionel:</label>
+        <input placeholder="03 45 67 89 01"
+               name="telPro"
+               id="telPro"
+               class="formInput fixture"
+               type="text"
+               required
+               pattern="^(0[0-9]|\+[3]{2}\s?[0-9]{1})(\s?[0-9]{2}){4}"
+               title="0 ou +33 suivi de 9 chiffres, avec ou sans espaces">
+    </div>
+    <div class="formInputGroup">
         <label for="email">Email:</label>
         <input placeholder="email@societe.com"
                name="email"
                id="email"
-               class="formInput"
+               class="formInput fixture"
                required
                type="email">
     </div>
     <span>* Champs requis</span>
-    <button type="submit">Valider</button>
+    <button id="updateUserFormSubmitBtn" type="submit">Valider</button>
 </form>

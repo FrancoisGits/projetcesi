@@ -62,7 +62,7 @@
     }
   }
 
-  input:not(:placeholder-shown):invalid {
+  input:not(:placeholder-shown):invalid, input[placeholder="Merci de renseigner ce champ"]:invalid{
     border: $errorBorder;
     color: $errorColor;
     &:focus, &:active{
@@ -112,6 +112,10 @@
   resize: none;
   height: 20vh;
   font-family: $mainFont;
+}
+
+.phoneDisclaimer{
+  display: none;
 }
 
 @media screen and (min-width: 1024px) {
