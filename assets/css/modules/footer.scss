@@ -1,0 +1,15 @@
+@import "./variables";
+
+footer {
+  grid-area: footer;
+  border-top: 1px solid $white;
+  padding-top: 4vh;
+  display: flex;
+  margin: 10vh 3vw;
+  justify-content: space-around;
+  filter: brightness(13%);
+
+  ul{
+    list-style: none;
+  }
+}

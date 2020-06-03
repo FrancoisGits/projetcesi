@@ -1,23 +1,30 @@
 **Projet de fin d'année CESI - Equipe 4** 
 
 ---
-ConnectLife
+**ConnectLife**
 
-Php 7.3, MariaDB 10.4, Sass 1.26
+Php 7.3, MariaDB 10.4, Sass 1.26, jQuery 3.5
 
 ---
 
-Installation:
+**Installation:**
 * `git clone https://github.com/Sonicfury/projetcesi`
 
 or
 * `git init`
 * `git remote add origin https://github.com/Sonicfury/projetcesi`
 
+In order to correctly install and run the app, make sure php 7.3 is installed and in your PATH and MariaDB 10.4 is installed.
+
+Then check the config.json and make sure the infos are right.
+
+Then you can run in the project directory (usually "C"/xampp/htdocs/connectlife"):
+
+`php bin/scripts/install.php`
 ---
-Naming:
+**Naming:**
 * variables: `$camelCase`
-* fonctions: `function camelCase()`
+* functions: `function camelCase()`
 * images: `snake_case.png`
 * html/css classes and ids: `#camelCase` `.camelCase`
 * todos: `// todo : check : this function should do this`
@@ -29,4 +36,5 @@ Naming:
      - updated this one
      - this is left to do
     ```
-  
+---
+$ php bin/scripts/install.php

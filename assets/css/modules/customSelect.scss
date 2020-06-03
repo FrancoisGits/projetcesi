@@ -1,0 +1,84 @@
+@import "variables";
+
+#selectInputGroup {
+  display: flex;
+  align-items: flex-start;
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    height: 3em;
+    box-shadow: none;
+    border: 0;
+    background: $black;
+    flex: 1;
+    align-items: center;
+    padding: 0 .5em;
+    color: $white;
+    cursor: pointer;
+
+    &:disabled{
+      filter: brightness(0.8);
+      background-color: $disabledSelect;
+    }
+
+    option{
+      background-color: $black;
+
+      &:hover{
+        background-color: $darkBlue;
+      }
+    }
+  }
+
+  /** IE **/
+  select::-ms-expand {
+    display: none;
+  }
+
+  .select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    line-height: 2em;
+    background: $black;
+    overflow: hidden;
+    border: $fieldBorder;
+
+    &::after{
+      content: '\25BC';
+      display: flex;
+      align-items: center;
+      position: absolute;
+      border-left: $fieldBorder;
+      height: 100%;
+      right: 0;
+      padding: 0 1em;
+      background: $black;
+      cursor: pointer;
+      pointer-events: none;
+      -webkit-transition: .25s all ease;
+      -o-transition: .25s all ease;
+      transition: .25s all ease;
+    }
+
+    &:hover::after {
+      color: $darkBlue;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  #selectInputGroup {
+    align-items: center;
+
+    .select{
+      width: 60%;
+      margin: 1em 0;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.welcome {
+  grid-area: logo;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh 3vw;
+
+  img {
+    width: 80%;
+  }
+
+  h1 {
+    display: none;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .welcome {
+    img {
+      width: 40%;
+    }
+  }
+}

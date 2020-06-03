@@ -1,0 +1,142 @@
+@import "./variables";
+
+.formGroup {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh 3vw;
+
+  #downloadDisclaimer{
+    text-align: center;
+  }
+  #exportAllButton, #exportLastButton{
+    margin-top: 2vh;
+    width: 70vw;
+  }
+
+  span {
+    font-style: italic;
+    font-size: 0.8em;
+    margin: 3vh 0;
+  }
+
+  button {
+    width: 30vw;
+    height: 2.5em;
+    background-color: $black;
+    color: $white;
+    border: $fieldBorder;
+    font-size: 1.5em;
+
+    &:hover {
+      background-color: $darkBlue;
+      cursor: pointer;
+      transition-duration: 0.15s;
+    }
+  }
+}
+
+.formInputGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1vh 0;
+
+  label {
+    margin-top: 0.6em;
+    margin-bottom: 0.4em;
+  }
+
+  .formInput {
+    height: 1.8em;
+    border: $fieldBorder;
+    background-color: $inputBGColor;
+    color: $white;
+    font-size: 1.1em;
+    padding: 5px;
+
+    &:focus, &:active{
+      box-shadow: $fieldActive;
+    }
+  }
+
+  input:not(:placeholder-shown):invalid, input[placeholder="Merci de renseigner ce champ"]:invalid{
+    border: $errorBorder;
+    color: $errorColor;
+    &:focus, &:active{
+      box-shadow: $errorActive;
+    }
+  }
+}
+
+.radioInputGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+
+  .radioContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      height: 2em;
+      width: 2em;
+
+      &:checked {
+        background-color: $darkBlue;
+        transition-duration: 0.15s;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.disclaimer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#message{
+  resize: none;
+  height: 20vh;
+  font-family: $mainFont;
+}
+
+.phoneDisclaimer{
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .formInputGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    input {
+      width: 70%;
+    }
+  }
+  .formGroup {
+
+    #exportAllButton, #exportLastButton{
+      width: 30vw;
+    }
+  }
+
+  #message{
+    width: 60%;
+  }
+}

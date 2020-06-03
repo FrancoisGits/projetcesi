@@ -1,0 +1,76 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
+#selectInputGroup {
+  display: flex;
+  align-items: flex-start;
+  /** IE **/
+}
+#selectInputGroup select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  height: 3em;
+  box-shadow: none;
+  border: 0;
+  background: #040404;
+  flex: 1;
+  align-items: center;
+  padding: 0 0.5em;
+  color: #f0f0f0;
+  cursor: pointer;
+}
+#selectInputGroup select:disabled {
+  filter: brightness(0.8);
+  background-color: #242424;
+}
+#selectInputGroup select option {
+  background-color: #040404;
+}
+#selectInputGroup select option:hover {
+  background-color: #047f9e;
+}
+#selectInputGroup select::-ms-expand {
+  display: none;
+}
+#selectInputGroup .select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  line-height: 2em;
+  background: #040404;
+  overflow: hidden;
+  border: 2px groove #f0f0f0;
+}
+#selectInputGroup .select::after {
+  content: "▼";
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-left: 2px groove #f0f0f0;
+  height: 100%;
+  right: 0;
+  padding: 0 1em;
+  background: #040404;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: 0.25s all ease;
+  -o-transition: 0.25s all ease;
+  transition: 0.25s all ease;
+}
+#selectInputGroup .select:hover::after {
+  color: #047f9e;
+}
+
+@media screen and (min-width: 1024px) {
+  #selectInputGroup {
+    align-items: center;
+  }
+  #selectInputGroup .select {
+    width: 60%;
+    margin: 1em 0;
+  }
+}
+
+/*# sourceMappingURL=customSelect.css.map */

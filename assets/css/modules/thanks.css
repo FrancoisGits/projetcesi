@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
+.thanks {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10vh;
+  padding: 2vw;
+}
+.thanks h1, .thanks p {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/*# sourceMappingURL=thanks.css.map */
