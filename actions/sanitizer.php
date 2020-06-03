@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Returns sanitized phone number: strips non digit characters and adds french indicator if applicable
  * @param string $dirtyPhoneNumber

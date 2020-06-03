@@ -2,10 +2,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require dirname(__DIR__) . '/config/database.php';
-
-
-// todo : check if works
 function connect($withDbName){
     $dsn = !$withDbName ? 'mysql:host=' . DB_HOST . ';port=' . DB_PORT : DB_DSN;
     try {

@@ -3,8 +3,8 @@ session_start();
 require_once '../bin/config/database.php';
 require './validator.php';
 
-
 $invalidEmail = false;
+
 /**
  * Creates an array representing a user, validates and sanitizes user input
  */
