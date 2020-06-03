@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
+.formGroup {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5vh 3vw;
+}
+.formGroup #downloadDisclaimer {
+  text-align: center;
+}
+.formGroup #exportAllButton, .formGroup #exportLastButton {
+  margin-top: 2vh;
+  width: 70vw;
+}
+.formGroup span {
+  font-style: italic;
+  font-size: 0.8em;
+  margin: 3vh 0;
+}
+.formGroup button {
+  width: 30vw;
+  height: 2.5em;
+  background-color: #040404;
+  color: #f0f0f0;
+  border: 2px groove #f0f0f0;
+  font-size: 1.5em;
+}
+.formGroup button:hover {
+  background-color: #047f9e;
+  cursor: pointer;
+  transition-duration: 0.15s;
+}
+
+.formInputGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1vh 0;
+}
+.formInputGroup label {
+  margin-top: 0.6em;
+  margin-bottom: 0.4em;
+}
+.formInputGroup .formInput {
+  height: 1.8em;
+  border: 2px groove #f0f0f0;
+  background-color: #020202;
+  color: #f0f0f0;
+  font-size: 1.1em;
+  padding: 5px;
+}
+.formInputGroup .formInput:focus, .formInputGroup .formInput:active {
+  box-shadow: 0 0 10px 3px rgba(240, 240, 240, 0.51);
+}
+.formInputGroup input:not(:placeholder-shown):invalid, .formInputGroup input[placeholder="Merci de renseigner ce champ"]:invalid {
+  border: 2px groove #b00700;
+  color: #b00700;
+}
+.formInputGroup input:not(:placeholder-shown):invalid:focus, .formInputGroup input:not(:placeholder-shown):invalid:active, .formInputGroup input[placeholder="Merci de renseigner ce champ"]:invalid:focus, .formInputGroup input[placeholder="Merci de renseigner ce champ"]:invalid:active {
+  box-shadow: 0 0 10px 3px rgba(176, 7, 0, 0.5);
+}
+
+.radioInputGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+.radioInputGroup .radioContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.radioInputGroup .radioContainer input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 2em;
+  width: 2em;
+}
+.radioInputGroup .radioContainer input[type=radio]:checked {
+  background-color: #047f9e;
+  transition-duration: 0.15s;
+}
+.radioInputGroup .radioContainer input[type=radio]:hover {
+  cursor: pointer;
+}
+
+.disclaimer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#message {
+  resize: none;
+  height: 20vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.phoneDisclaimer {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .formInputGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .formInputGroup input {
+    width: 70%;
+  }
+
+  .formGroup #exportAllButton, .formGroup #exportLastButton {
+    width: 30vw;
+  }
+
+  #message {
+    width: 60%;
+  }
+}
+
+/*# sourceMappingURL=forms.css.map */

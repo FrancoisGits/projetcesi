@@ -1,0 +1,16 @@
+@import "variables";
+
+.thanks {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10vh;
+  padding: 2vw;
+
+  h1, p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}
