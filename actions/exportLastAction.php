@@ -49,7 +49,7 @@ try {
 
 // XML handling
 if ($_SESSION['noUsersToExport'] === false) {
-    $file = dirname(__DIR__) . '\exports\\' . date('Y_m_d_His') . '_ConnectLife_new_customers_only.xml';
+    $file = ROOT . 'exports/' . date('Y_m_d_His') . '_ConnectLife_new_customers_only.xml';
     $idsToUpdate = createXML($result, $file, true);
     $fileXsd = ROOT . 'exports/' . 'connectlife_customers.xsd';
     $zipFilePath = ROOT . 'exports/' . date('Y_m_d_His') . '_ConnectLife_new_customers_only.zip';
