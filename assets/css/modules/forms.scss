@@ -11,6 +11,11 @@
   #downloadDisclaimer{
     text-align: center;
   }
+  #downloadNotAvailable{
+    text-align: center;
+    display: none;
+  }
+
   #exportAllButton, #exportLastButton{
     margin-top: 2vh;
     width: 70vw;

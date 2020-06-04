@@ -51,6 +51,10 @@ footer ul {
 .formGroup #downloadDisclaimer {
   text-align: center;
 }
+.formGroup #downloadNotAvailable {
+  text-align: center;
+  display: none;
+}
 .formGroup #exportAllButton, .formGroup #exportLastButton {
   margin-top: 2vh;
   width: 70vw;

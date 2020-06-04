@@ -1,5 +1,5 @@
 <?php
-
+require_once '../bin/config/config.php';
 require_once '../bin/config/database.php';
 
 $cp = $_GET["codePostal"] ?: die('Error : codePostal needed, null given');
@@ -12,5 +12,8 @@ try {
 
     echo json_encode($result, JSON_THROW_ON_ERROR, 512);
 } catch (Exception $e) {
-    die('Error :' . $e->getMessage());
+    if (PRODUCTION === false){
+        die('Error :' . $e->getMessage());
+    }
+    addToLog($e->getMessage());
 }
