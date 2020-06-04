@@ -43,14 +43,14 @@ export const getCurrentUser = () => {
         dataType: 'json',
 
         success: function (data, status) {
-            if (data.isSociete === '0'){
-                hideFields(societeRelatedFields);
-                phoneFieldToggle();
+            if (fields) {
+                if (data.isSociete === '0') {
+                    hideFields(societeRelatedFields);
+                    phoneFieldToggle();
                 }
-            populateFieldsWithData(fields, data);
-        },
-        error: function (result, status, error) {
-        },
+                populateFieldsWithData(fields, data);
+            }
+        }
     });
 };
 
@@ -76,16 +76,16 @@ const phoneFieldToggle = () => {
     }
 
     const submitBtn = document.querySelector('#updateUserFormSubmitBtn');
-    if (submitBtn){
+    if (submitBtn) {
         submitBtn.addEventListener('click', (e) => {
-            if (telPro.value === '' && telPerso.value === ''){
+            if (telPro.value === '' && telPerso.value === '') {
                 telPerso.placeholder = 'Merci de renseigner ce champ';
                 telPerso.focus();
                 e.preventDefault();
             }
         });
     }
- };
+};
 
 /**
  * Adds a star to an element's label
@@ -93,11 +93,11 @@ const phoneFieldToggle = () => {
  */
 const addStarToLabel = function (e) {
     let fieldId = e.getAttribute('id');
-    if (fieldId === 'civilite1' || fieldId === 'civilite2'){
+    if (fieldId === 'madame' || fieldId === 'monsieur') {
         fieldId = 'civilite';
     }
     let requiredFieldsLabel = document.querySelector('label[for=' + fieldId + ']');
-    if (!requiredFieldsLabel.innerHTML.includes('*')){
+    if (!requiredFieldsLabel.innerHTML.includes('*')) {
         requiredFieldsLabel.innerHTML += ' *';
     }
 };
@@ -119,60 +119,66 @@ const hideFields = (fields) => {
  * @param data
  */
 const populateFieldsWithData = (fields, data) => {
+    const madame = document.getElementById('madame');
+    const monsieur = document.getElementById('monsieur');
+    if (madame && data.civilite === 'Mme') {
+        madame.checked = true;
+    } else if (monsieur && data.civilite === 'M.') {
+        monsieur.checked = true;
+    }
     Array.from(fields).forEach(field => {
         let fieldName = field.getAttribute('name');
         switch (fieldName) {
             case 'nom':
-                if (data.nom){
+                if (data.nom) {
                     field.value = data.nom;
                 }
                 break;
             case 'prenom':
-                if (data.prenom){
+                if (data.prenom) {
                     field.value = data.prenom;
                 }
                 break;
             case 'email':
-                if (data.mail){
+                if (data.mail) {
                     field.value = data.mail;
                 }
                 break;
             case 'adresse1':
-                if (data.adresse1){
+                if (data.adresse1) {
                     field.value = data.adresse1;
                 }
                 break;
             case 'adresse2':
-                if (data.adresse2){
+                if (data.adresse2) {
                     field.value = data.adresse2;
                 }
                 break;
             case 'codePostal':
-                if (data.codePostal){
+                if (data.codePostal) {
                     field.value = data.codePostal;
                     requestInseeCodes();
                 }
                 break;
             case 'telPro':
-                if (data.telPro){
+                if (data.telPro) {
                     field.value = data.telPro;
                 }
                 break;
             case 'telPerso':
-                if (data.telPerso){
+                if (data.telPerso) {
                     field.value = data.telPerso;
                 }
                 break;
             case 'societe':
-                if (data.societe){
+                if (data.societe) {
                     field.value = data.societe;
                 }
                 break;
             case 'poste':
-                if (data.poste){
+                if (data.poste) {
                     field.value = data.poste;
                 }
-
         }
     })
 };

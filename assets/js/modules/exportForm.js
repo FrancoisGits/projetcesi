@@ -10,7 +10,7 @@ const BASE_URI = "http://connectlife.test/actions/";
  * Download not available message
  * @type {HTMLElement}
  */
-const downloadNotAvailable = document.getElementById('downloadNotAvailable');
+export const downloadNotAvailable = document.getElementById('downloadNotAvailable');
 
 /**
  * button to export last users
@@ -31,7 +31,7 @@ export const getLastUsers = () => {
             if (data.toExport === '0' && downloadNotAvailable){
                 downloadNotAvailable.style.display = 'flex';
                 exportLastButton.disabled = true;
-            } else {
+            } else if (data.toExport !== '0' && downloadNotAvailable) {
                 downloadNotAvailable.style.display = 'none';
                 exportLastButton.disabled = false;
             }

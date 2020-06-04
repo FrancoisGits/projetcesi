@@ -5,7 +5,7 @@
             <label for="civilite1">Madame:</label>
             <input
                 name="civilite"
-                id="civilite1"
+                id="madame"
                 value="Mme"
                 class="formInput"
                 required
@@ -17,7 +17,7 @@
             <label for="civilite2">Monsieur:</label>
             <input
                 name="civilite"
-                id="civilite2"
+                id="monsieur"
                 value="M."
                 class="formInput"
                 required
