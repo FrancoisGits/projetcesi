@@ -7,7 +7,7 @@
   },
   "url": "http://connectlife.test",
   "appName": "connectlife.test",
-  "production": false,
+  "production": true,
   "xampp": {
     "path": "C:/xampp"
   }

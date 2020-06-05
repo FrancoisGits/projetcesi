@@ -1,6 +1,8 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('max_execution_time', -1);
+
+require_once dirname(__DIR__) . '\config\config.php';
 
 function connect($withDbName){
     $dsn = !$withDbName ? 'mysql:host=' . DB_HOST . ';port=' . DB_PORT : DB_DSN;

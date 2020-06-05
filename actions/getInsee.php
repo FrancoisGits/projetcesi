@@ -10,7 +10,7 @@ try {
     $prep->execute([':needle' => $cp]);
     $result = $prep->fetchAll();
 
-    echo json_encode($result, JSON_THROW_ON_ERROR, 512);
+    echo json_encode($result);
 } catch (Exception $e) {
     if (PRODUCTION === false){
         die('Error :' . $e->getMessage());
