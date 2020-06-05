@@ -12,7 +12,7 @@ try {
     $query = $db->query($stmt);
     $result = $query->fetch();
 
-    echo json_encode($result, JSON_THROW_ON_ERROR, 512);
+    echo json_encode($result);
 
 } catch (Exception $e) {
     if (PRODUCTION === false) {
